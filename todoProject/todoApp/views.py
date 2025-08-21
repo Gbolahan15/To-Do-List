@@ -15,15 +15,15 @@ def task_create_view(request):
             return redirect('list.html')
     else:
         form = TaskForm()
-    return render(request, 'add.html', {'form':form})
+    return render(request, 'create.html', {'form':form})
 
 # Read/List all tasks
-def read_view(request):
-    list_tasks = Tasks.objects.all()
-    return render(request, 'list.html', {'list_tasks':list_tasks})
+def task_read_view(request):
+    tasks = Tasks.objects.all()
+    return render(request, 'list.html', {'list_tasks':tasks})
 
 # Update/Edit a task
-def update_view(request, task_id):
+def task_update_view(request, task_id):
     update_task = Tasks.objects.get(task_id=task_id)
     form = TaskForm(instance=task_id)
     if request.method == "POST":
@@ -34,7 +34,7 @@ def update_view(request, task_id):
     return render(request, 'update.html', {'form':form})
 
 # Delete a task
-def delete_view(request, task_id):
+def task_delete_view(request, task_id):
     update_task = Tasks.objects.get(task_id=task_id)
     if request.method == "POST":
         update_task.delete()
