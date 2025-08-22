@@ -7,12 +7,11 @@ from .forms import TaskForm
 
 # Create/add a new task
 def task_create_view(request):
-    form = TaskForm()
     if request.method == "POST":
         form = TaskForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('list.html')
+            return redirect('task_list')
     else:
         form = TaskForm()
     return render(request, 'create.html', {'form':form})
@@ -20,7 +19,7 @@ def task_create_view(request):
 # Read/List all tasks
 def task_read_view(request):
     tasks = Tasks.objects.all()
-    return render(request, 'list.html', {'list_tasks':tasks})
+    return render(request, 'list.html', {'tasks':tasks})
 
 # Update/Edit a task
 def task_update_view(request, task_id):

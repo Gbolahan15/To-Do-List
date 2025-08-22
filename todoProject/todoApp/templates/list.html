@@ -9,7 +9,6 @@
 </head>
 <body>
     <h1>My To-Do-List</h1>
-    <button>
         <a href="{% url 'task_create' %}">Add to list</a>
         <ul>
             {% for task in tasks %}
@@ -20,14 +19,10 @@
                 {% else %}
                     (pending)
                 {% endif %}
-                <a href="{% url 'update' task.id %}">Update Task</a>
-                <a href="{% url 'delete' task.id %}">Delete task</a>
             </li>
             {% empty %}
             <li>No tasks yet</li>
             {% endfor %}
         </ul>
-
-    </button>
 </body>
 </html>
