@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Tasks
 from .forms import TaskForm
 
@@ -7,6 +7,7 @@ from .forms import TaskForm
 
 # Create/add a new task
 def task_create_view(request):
+    form = TaskForm()
     if request.method == "POST":
         form = TaskForm(request.POST)
         if form.is_valid():
@@ -23,20 +24,24 @@ def task_read_view(request):
 
 # Update/Edit a task
 def task_update_view(request, task_id):
-    update_task = Tasks.objects.get(task_id=task_id)
-    form = TaskForm(instance=task_id)
+    task = get_object_or_404(Tasks, id=task_id)
+    # update_task = Tasks.objects.get(task_id=task_id)
     if request.method == "POST":
-        TaskForm(request.POST, instance=update_task)
+        form = TaskForm(request.POST, instance=task)
+        # TaskForm(request.POST, instance=update_task)
         if form.is_valid():
             form.save()
-            return redirect('list')
+            return redirect('task_list')
+    else:
+        form = TaskForm(instance=task)
     return render(request, 'update.html', {'form':form})
 
 # Delete a task
 def task_delete_view(request, task_id):
-    update_task = Tasks.objects.get(task_id=task_id)
+    task = get_object_or_404(Tasks, id=task_id)
+    # update_task = Tasks.objects.get(task_id=task_id)
     if request.method == "POST":
-        update_task.delete()
-        return redirect('list')
-    return render(request, 'update.html', {'update-task':update_task})
+        task.delete()
+        return redirect('task_list')
+    return render(request, 'delete.html', {'task':task})
 

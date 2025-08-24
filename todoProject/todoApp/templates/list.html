@@ -19,6 +19,8 @@
                 {% else %}
                     (pending)
                 {% endif %}
+                <a href="{% url 'task_update' task.id %}">Update Task</a>
+                <a href="{% url 'task_delete' task.id %}">Delete Task</a>
             </li>
             {% empty %}
             <li>No tasks yet</li>
