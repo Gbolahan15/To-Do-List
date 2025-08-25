@@ -25,10 +25,8 @@ def task_read_view(request):
 # Update/Edit a task
 def task_update_view(request, task_id):
     task = get_object_or_404(Tasks, id=task_id)
-    # update_task = Tasks.objects.get(task_id=task_id)
     if request.method == "POST":
         form = TaskForm(request.POST, instance=task)
-        # TaskForm(request.POST, instance=update_task)
         if form.is_valid():
             form.save()
             return redirect('task_list')
@@ -39,7 +37,6 @@ def task_update_view(request, task_id):
 # Delete a task
 def task_delete_view(request, task_id):
     task = get_object_or_404(Tasks, id=task_id)
-    # update_task = Tasks.objects.get(task_id=task_id)
     if request.method == "POST":
         task.delete()
         return redirect('task_list')

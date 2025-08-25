@@ -10,7 +10,7 @@
 <body>
     <h1>My To-Do-List</h1>
         <a href="{% url 'task_create' %}">Add to list</a>
-        <ul>
+        <ol>
             {% for task in tasks %}
             <li>
                 {{ task.title }}
@@ -19,12 +19,12 @@
                 {% else %}
                     (pending)
                 {% endif %}
-                <a href="{% url 'task_update' task.id %}">Update Task</a>
+                <a href="{% url 'task_update' task.id %}">Edit</a>
                 <a href="{% url 'task_delete' task.id %}">Delete Task</a>
             </li>
             {% empty %}
             <li>No tasks yet</li>
             {% endfor %}
-        </ul>
+        </ol>
 </body>
 </html>
