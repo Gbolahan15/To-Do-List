@@ -42,3 +42,9 @@ def task_delete_view(request, task_id):
         return redirect('task_list')
     return render(request, 'delete.html', {'task':task})
 
+# Delete all tasks
+def task_delete_all_view(request):
+    if request.method == "POST":
+        Tasks.objects.all().delete()
+        return redirect('task_list')
+    return render(request, 'delete_all.html')
