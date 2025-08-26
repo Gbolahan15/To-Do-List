@@ -1,0 +1,76 @@
+body{
+    background: rgb(211, 209, 209);
+    padding: 0;
+    margin: 0;
+}
+
+.container{
+    border: 1px solid black;
+    width: 700px;
+    height: 350px;
+    margin: 100px auto;
+    align-items: center;
+    justify-content: center;
+}
+
+h1{
+    text-align: center;
+    background: rgb(3, 190, 3);
+}
+
+.addlist{
+    margin-left: 610px;
+    text-decoration: none;
+    border: 1px solid green;
+    padding: 3px;
+    background: green;
+    color: white;
+}
+
+.addlist:hover{
+    background: darkgreen;
+}
+
+li{
+    font-size: 17px;
+    line-height: 2;
+    display: flex;
+    gap: 20px;
+}
+
+li .change{
+    margin-left: 100px;
+}
+
+li a{
+    display: inline-block;
+
+}
+
+li a.change#edit{
+    text-decoration: none;
+    border: 1px solid yellow;
+    background: yellow;
+    color: black;
+    padding: 1px 10px 1px 10px;
+    margin-bottom: 8px;
+    flex: 1;
+}
+
+li a.change#delete{
+    text-decoration: none;
+    border: 1px solid red;
+    background: red;
+    color: black;
+    padding: 1px 10px 1px 10px;
+    margin-bottom: 8px;
+}
+
+
+.deleteall{
+    text-decoration: none;
+    border: 1px solid red;
+    background: red;
+    color: white;
+    padding: 3px;
+}

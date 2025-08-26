@@ -5,11 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do-List</title>
+    <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
 
 </head>
 <body>
-    <h1>My To-Do-List</h1>
-        <a href="{% url 'task_create' %}">Add to list</a>
+    <div class="container">
+        <h1>My To-Do-List</h1>
+        <a href="{% url 'task_create' %}" class="addlist">Add to list</a>
         <ul>
             {% for task in tasks %}
             <li>
@@ -19,13 +21,14 @@
                 {% else %}
                     (pending)
                 {% endif %}
-                <a href="{% url 'task_update' task.id %}">Edit</a>
-                <a href="{% url 'task_delete' task.id %}">Delete Task</a>
+                <a href="{% url 'task_update' task.id %}" class="change" id="edit">Edit</a>
+                <a href="{% url 'task_delete' task.id %}" class="change" id="delete">Delete Task</a>
             </li>
             {% empty %}
             <li>No tasks yet</li>
             {% endfor %}
         </ul>
-        <a href="{% url 'task_delete_all' %}">Delete all</a>
+        <a href="{% url 'task_delete_all' %}" class="deleteall">Delete all</a>
+    </div>
 </body>
 </html>
