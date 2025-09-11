@@ -7,13 +7,21 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
     <title>To-Do-List</title>
+    <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
 
 </head>
 <body>
+<<<<<<< HEAD
     <div class="text-center bg-dark text-light p-1"><h1>My To-Do-List</h1></div>
        <div class="container">
          <a href="{% url 'task_create' %}" class="btn btn-success text-decoration none my-2">Add to list</a></button>
         <ol>
+=======
+    <div class="container">
+        <h1>My To-Do-List</h1>
+        <a href="{% url 'task_create' %}" class="addlist">Add to list</a>
+        <ul>
+>>>>>>> 6f29f4f49706fbacfe98ea73c6c28de30f7aa266
             {% for task in tasks %}
             <li class="pb-3">
                 {{ task.title }}
@@ -22,14 +30,25 @@
                 {% else %}
                     ✖️
                 {% endif %}
+<<<<<<< HEAD
                 <a href="{% url 'task_update' task.id %}" class="btn btn-outline-secondary lead text-decoration-none ms-5 mx-4 align-items-center justify-content-between">✎</a>
                 <a href="{% url 'task_delete' task.id %}" class="btn btn-outline-secondary lead text-decoration-none">🗑</a>
+=======
+                <a href="{% url 'task_update' task.id %}" class="change" id="edit">Edit</a>
+                <a href="{% url 'task_delete' task.id %}" class="change" id="delete">Delete Task</a>
+>>>>>>> 6f29f4f49706fbacfe98ea73c6c28de30f7aa266
             </li>
             {% empty %}
             <li>No tasks yet</li>
             {% endfor %}
+<<<<<<< HEAD
         </ol>
         <a href="{% url 'task_delete_all' %}" class="btn btn-danger text-decoration-none">Delete all</a>
        </div>
+=======
+        </ul>
+        <a href="{% url 'task_delete_all' %}" class="deleteall">Delete all</a>
+    </div>
+>>>>>>> 6f29f4f49706fbacfe98ea73c6c28de30f7aa266
 </body>
 </html>
