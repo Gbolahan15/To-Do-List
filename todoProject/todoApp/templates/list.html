@@ -4,28 +4,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
     <title>To-Do-List</title>
 
 </head>
 <body>
-    <h1>My To-Do-List</h1>
-        <a href="{% url 'task_create' %}">Add to list</a>
-        <ul>
+    <div class="text-center bg-dark text-light p-1"><h1>My To-Do-List</h1></div>
+       <div class="container">
+         <a href="{% url 'task_create' %}" class="btn btn-success text-decoration none my-2">Add to list</a></button>
+        <ol>
             {% for task in tasks %}
-            <li>
+            <li class="pb-3">
                 {{ task.title }}
                 {% if task.completed %}
-                    (completed)
+                    ✔️
                 {% else %}
-                    (pending)
+                    ✖️
                 {% endif %}
-                <a href="{% url 'task_update' task.id %}">Edit</a>
-                <a href="{% url 'task_delete' task.id %}">Delete Task</a>
+                <a href="{% url 'task_update' task.id %}" class="btn btn-outline-secondary lead text-decoration-none ms-5 mx-4 align-items-center justify-content-between">✎</a>
+                <a href="{% url 'task_delete' task.id %}" class="btn btn-outline-secondary lead text-decoration-none">🗑</a>
             </li>
             {% empty %}
             <li>No tasks yet</li>
             {% endfor %}
-        </ul>
-        <a href="{% url 'task_delete_all' %}">Delete all</a>
+        </ol>
+        <a href="{% url 'task_delete_all' %}" class="btn btn-danger text-decoration-none">Delete all</a>
+       </div>
 </body>
 </html>
